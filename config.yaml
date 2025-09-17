@@ -1,0 +1,23 @@
+# AgentIQ config file
+agents:
+  - name: researcher
+    role: Finds relevant information
+    model: openai:gpt-4o-mini
+    allowed_tools: ["retrieval"]
+
+  - name: analyst
+    role: Summarizes and explains findings
+    model: anthropic:claude-3-haiku
+    allowed_tools: ["summarize"]
+
+  - name: creator
+    role: Generates creative content
+    model: google:gemini-pro
+    allowed_tools: ["generate"]
+
+settings:
+  logging:
+    format: "json"   # options: json, text
+    level: "info"
+  router:
+    strategy: "hybrid" # options: hybrid, cheapest, fastest
