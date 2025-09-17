@@ -1,13 +1,20 @@
-import os, time, random
-from dotenv import load_dotenv
 
-# Load API keys from .env (if present)
+import os, random, re, statistics as stats
+from dotenv import load_dotenv
+from .decision_store import record_decision
 load_dotenv()
 
-# Lazy imports to avoid hard dependency during mock runs
-_openai_client = None
-_anthropic_client = None
-_gemini_ready = None
+_openai_client=None
+_anthropic_client=None
+_gemini_ready=None
+
+# Profiles: cost ($ per 1k tokens), latency (relative), quality (heuristic)
+DEFAULT_PROFILES = {
+    "openai:gpt-4o-mini": {"cost": 0.15, "latency": 0.8, "quality": 0.75},
+    "openai:gpt-4o": {"cost": 5.0, "latency": 1.0, "quality": 0.95},
+    "anthropic:claude-3-haiku": {"cost": 0.25, "latency": 0.7, "quality": 0.80},
+    "google:gemini-pro": {"cost": 0.125, "latency": 0.6, "quality": 0.78}
+}
 
 def _get_openai_client():
     global _openai_client
@@ -40,83 +47,139 @@ def _ensure_gemini():
             _gemini_ready = False
     return _gemini_ready
 
+def _estimate_tokens(text:str)->int:
+    return max(16, int(len(text)/4))
+
+def _traits(task:str):
+    t = task.lower()
+    return {
+        "is_code": any(k in t for k in ("code","python","algorithm","implement")),
+        "is_summary": any(k in t for k in ("summarize","summary","tl;dr","short")),
+        "has_math": bool(re.search(r"\b\d+\s*[\+\-\*/^]", t))
+    }
+
 class ModelRouter:
-    """Routes a task to an appropriate LLM based on strategy and heuristics."""
-    def __init__(self, strategy: str = "hybrid"):
+    def __init__(self, strategy="smart", profiles=None, weights=None):
         self.strategy = strategy
+        self.profiles = profiles or DEFAULT_PROFILES
+        self.weights = weights or {"cost": 0.60, "latency": 0.25, "quality": 0.15}
 
-    def select_model(self, task: str, preferred: str = "") -> str:
-        t = (task or "").lower()
-        if preferred:
-            # allow preferred model to guide choice when it matches strategy
-            return preferred
+    def _score(self, model, tokens_in, traits):
+        p = self.profiles.get(model, {"cost":1.0,"latency":1.0,"quality":0.7})
+        tokens_out = min(1500, int(tokens_in*2.0))
+        tokens_total = tokens_in + tokens_out
+        est_cost = p["cost"] * (tokens_total/1000.0)
 
+        # Adjust quality by traits
+        quality = p["quality"]
+        if traits["is_code"] and "openai" in model: quality += 0.05
+        if traits["is_summary"] and "anthropic" in model: quality += 0.05
+        if "gemini" in model and not traits["is_code"]: quality += 0.02
+        quality = max(0.6, min(0.98, quality))
+
+        # Normalize
+        costs = [v["cost"] for v in self.profiles.values()]
+        lats  = [v["latency"] for v in self.profiles.values()]
+        c_med, l_med = stats.median(costs), stats.median(lats)
+        cost_norm = p["cost"]/max(1e-6, c_med)
+        lat_norm  = p["latency"]/max(1e-6, l_med)
+        qual_norm = 1.0 - quality
+
+        objective = (self.weights["cost"]*cost_norm +
+                     self.weights["latency"]*lat_norm +
+                     self.weights["quality"]*qual_norm)
+        why = {
+            "profile": p, "traits": traits,
+            "tokens_in": tokens_in, "tokens_out_est": tokens_out, "tokens_total_est": tokens_total,
+            "est_cost": round(est_cost, 6),
+            "norms": {"cost_norm": cost_norm, "lat_norm": lat_norm, "qual_norm": qual_norm},
+            "weights": self.weights, "objective": objective
+        }
+        return objective, why
+
+    def select_model(self, task, preferred:str="", agent_name:str="", role:str=""):
+        tokens = _estimate_tokens(task)
+        traits = _traits(task)
+        candidates = list(self.profiles.keys())
+
+        # Shortcuts
         if self.strategy == "cheapest":
-            return "anthropic:claude-3-haiku"
-        if self.strategy == "fastest":
-            return "google:gemini-pro"
+            chosen = min(candidates, key=lambda m: self.profiles[m]["cost"])
+        elif self.strategy == "fastest":
+            chosen = min(candidates, key=lambda m: self.profiles[m]["latency"])
+        elif self.strategy == "hybrid":
+            if traits["is_code"]: chosen = "openai:gpt-4o"
+            elif traits["is_summary"]: chosen = "anthropic:claude-3-haiku"
+            else: chosen = "openai:gpt-4o-mini"
+        else:
+            scored = []
+            for m in candidates:
+                s, why = self._score(m, tokens, traits)
+                scored.append((m, s, why))
+            scored.sort(key=lambda x: x[1])
+            chosen = scored[0][0]
 
-        # hybrid heuristic
-        if "code" in t or "implement" in t or "python" in t:
-            return "openai:gpt-4o"
-        if "summarize" in t or "tl;dr" in t or "summary" in t:
-            return "anthropic:claude-3-haiku"
-        return "openai:gpt-4o-mini"
+        # Preferred hint (smart only)
+        if preferred and preferred in self.profiles and self.strategy == "smart":
+            # honor preferred if within 8% of best objective
+            def sc(m): return self._score(m, tokens, traits)[0]
+            if sc(preferred) <= sc(chosen) * 1.08:
+                chosen = preferred
+
+        # Build decision record (with cost savings)
+        record = {
+            "agent": agent_name, "role": role, "task": task[:300],
+            "strategy": self.strategy, "traits": traits,
+            "preferred": preferred, "chosen": chosen
+        }
+        # Include scoring details for smart
+        if self.strategy == "smart":
+            scored_rows = [{"model": m, "score": s, **why} for m,s,why in scored]
+            scored_rows.sort(key=lambda x: x["score"])
+            record["scored"] = scored_rows
+            # cost savings vs. next best and vs. gpt-4o baseline
+            chosen_row = scored_rows[0]
+            next_best_row = scored_rows[1] if len(scored_rows) > 1 else chosen_row
+            baseline = "openai:gpt-4o"
+            baseline_row = next((r for r in scored_rows if r["model"] == baseline), None)
+            record["est_cost_chosen"] = chosen_row["est_cost"]
+            record["est_cost_next_best"] = next_best_row["est_cost"]
+            record["est_cost_baseline_gpt4o"] = baseline_row["est_cost"] if baseline_row else None
+            record["est_cost_saved_vs_next_best"] = round((next_best_row["est_cost"] - chosen_row["est_cost"]), 6)
+            if baseline_row:
+                record["est_cost_saved_vs_gpt4o"] = round((baseline_row["est_cost"] - chosen_row["est_cost"]), 6)
+            record["tokens_total_est"] = chosen_row["tokens_total_est"]
+        record_decision(record)
+        return chosen
 
     def call_model(self, model_name: str, prompt: str):
-        """Call the specified model. Falls back to a mock if SDK/key not available."""
         if model_name.startswith("openai:"):
-            client = _get_openai_client()
-            model = model_name.split(":", 1)[1]
+            client=_get_openai_client(); model=model_name.split(":",1)[1]
             if client:
                 try:
-                    resp = client.chat.completions.create(
-                        model=model,
-                        messages=[{"role":"user","content":prompt}],
-                        temperature=0.2,
-                        max_tokens=500
-                    )
-                    text = resp.choices[0].message.content
-                    return text, 0.85
-                except Exception:
-                    pass
-            # Fallback mock
-            return f"[OPENAI MOCK {model}] {prompt[:180]}", random.uniform(0.6, 0.9)
-
+                    resp=client.chat.completions.create(model=model,messages=[{"role":"user","content":prompt}],temperature=0.2,max_tokens=500)
+                    return resp.choices[0].message.content, 0.85
+                except Exception: pass
+            return f"[OPENAI MOCK {model}] "+prompt[:180], 0.75
         if model_name.startswith("anthropic:"):
-            client = _get_anthropic_client()
-            model = model_name.split(":", 1)[1]
+            client=_get_anthropic_client(); model=model_name.split(":",1)[1]
             if client:
                 try:
-                    resp = client.messages.create(
-                        model=model,
-                        max_tokens=500,
-                        messages=[{"role":"user","content":prompt}]
-                    )
-                    # anthropic returns structured content list
-                    text = ""
-                    try:
-                        text = "".join([b.text for b in resp.content])
-                    except Exception:
-                        text = str(resp)
-                    return text, 0.83
-                except Exception:
-                    pass
-            return f"[ANTHROPIC MOCK {model}] {prompt[:180]}", random.uniform(0.6, 0.9)
-
+                    resp=client.messages.create(model=model,max_tokens=500,messages=[{"role":"user","content":prompt}])
+                    try: txt="".join([b.text for b in resp.content])
+                    except Exception: txt=str(resp)
+                    return txt, 0.83
+                except Exception: pass
+            return f"[ANTHROPIC MOCK {model}] "+prompt[:180], 0.74
         if model_name.startswith("google:"):
-            ok = _ensure_gemini()
-            model = model_name.split(":", 1)[1]
+            ok=_ensure_gemini(); model=model_name.split(":",1)[1]
             if ok:
                 try:
                     import google.generativeai as genai
-                    gm = genai.GenerativeModel(model)
-                    resp = gm.generate_content(prompt)
-                    text = getattr(resp, "text", None) or (resp.candidates[0].content.parts[0].text if getattr(resp, "candidates", None) else "")
-                    return text, 0.8
-                except Exception:
-                    pass
-            return f"[GEMINI MOCK {model}] {prompt[:180]}", random.uniform(0.6, 0.9)
-
-        # Unknown model -> pure mock
-        return f"[MOCK {model_name}] {prompt[:180]}", random.uniform(0.6, 0.9)
+                    gm=genai.GenerativeModel(model)
+                    resp=gm.generate_content(prompt)
+                    txt=getattr(resp,"text",None) or (resp.candidates[0].content.parts[0].text if getattr(resp,"candidates",None) else "")
+                    return txt, 0.8
+                except Exception: pass
+            return f"[GEMINI MOCK {model}] "+prompt[:180], 0.73
+        return f"[MOCK {model_name}] "+prompt[:180], 0.7
