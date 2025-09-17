@@ -7,13 +7,23 @@
 
 **The Ultimate LLM Selection Engine** — AgentsIQ automatically chooses the most cost-efficient, fastest, and highest-quality model for each task, supporting **10+ models** including OpenAI, Anthropic, Google, **Ollama (local)**, and **Grok**. Features comprehensive benchmarking with beautiful visualizations and real-time performance analytics.
 
+## 🎥 Watch AgentsIQ in Action
+
+<div align="center">
+
+https://github.com/yourusername/AgentsIQ/assets/youruserid/AgentIQ.mp4
+
+*See AgentsIQ intelligently route between models in real-time*
+
+</div>
+
 [![AgentOps](https://img.shields.io/badge/Powered%20by-AgentOps-blue?style=for-the-badge&logo=data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTEyIDJMMTMuMDkgOC4yNkwyMCA5TDEzLjA5IDE1Ljc0TDEyIDIyTDEwLjkxIDE1Ljc0TDQgOUwxMC45MSA4LjI2TDEyIDJaIiBmaWxsPSIjMDA3Q0ZGIi8+Cjwvc3ZnPgo=)](https://agentops.ai)
 [![Python](https://img.shields.io/badge/Python-3.8+-blue?style=for-the-badge&logo=python)](https://python.org)
 [![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
 
 </div>
 
-## 🌟 What Makes AgentsIQ Viral-Worthy
+## 🌟 What Makes AgentsIQ Intelligent
 
 - **🧠 Intelligent Selection**: Automatically picks the best model based on cost, latency, and quality
 - **📊 Comprehensive Benchmarking**: Beautiful graphs showing model performance across different tasks
