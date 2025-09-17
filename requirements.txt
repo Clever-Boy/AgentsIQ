@@ -8,3 +8,7 @@ uvicorn
 pandas
 agentops
 python-multipart
+matplotlib
+numpy
+requests
+seaborn

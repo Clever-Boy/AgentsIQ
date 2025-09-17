@@ -1,10 +1,10 @@
 
-import os, re, statistics as stats
+import os, re, statistics as stats, requests, json
 from dotenv import load_dotenv
 from .decision_store import record_decision
 from .config_loader import load_config
 load_dotenv()
-_openai_client=None; _anthropic_client=None; _gemini_ready=None
+_openai_client=None; _anthropic_client=None; _gemini_ready=None; _grok_client=None
 def _get_openai_client():
     global _openai_client
     if _openai_client is None:
@@ -29,6 +29,79 @@ def _ensure_gemini():
             genai.configure(api_key=os.getenv("GOOGLE_API_KEY")); _gemini_ready = True
         except Exception: _gemini_ready = False
     return _gemini_ready
+
+def _get_grok_client():
+    global _grok_client
+    if _grok_client is None:
+        try:
+            api_key = os.getenv("GROK_API_KEY")
+            if api_key:
+                _grok_client = {"api_key": api_key, "base_url": "https://api.x.ai/v1"}
+            else:
+                _grok_client = False
+        except Exception: _grok_client = False
+    return _grok_client
+
+def _call_ollama(model_name: str, prompt: str):
+    """Call Ollama API for local models"""
+    try:
+        model = model_name.split(":", 1)[1]  # Remove 'ollama:' prefix
+        ollama_url = os.getenv("OLLAMA_URL", "http://localhost:11434")
+        
+        response = requests.post(
+            f"{ollama_url}/api/generate",
+            json={
+                "model": model,
+                "prompt": prompt,
+                "stream": False,
+                "options": {"temperature": 0.2, "num_predict": 500}
+            },
+            timeout=30
+        )
+        
+        if response.status_code == 200:
+            result = response.json()
+            return result.get("response", ""), 0.8
+        else:
+            return f"[OLLAMA ERROR {response.status_code}] {prompt[:180]}", 0.6
+    except Exception as e:
+        return f"[OLLAMA MOCK {model_name}] {prompt[:180]}", 0.7
+
+def _call_grok(model_name: str, prompt: str):
+    """Call Grok API"""
+    client = _get_grok_client()
+    if not client:
+        return f"[GROK MOCK {model_name}] {prompt[:180]}", 0.7
+    
+    try:
+        model = model_name.split(":", 1)[1]  # Remove 'grok:' prefix
+        headers = {
+            "Authorization": f"Bearer {client['api_key']}",
+            "Content-Type": "application/json"
+        }
+        
+        data = {
+            "model": model,
+            "messages": [{"role": "user", "content": prompt}],
+            "temperature": 0.2,
+            "max_tokens": 500
+        }
+        
+        response = requests.post(
+            f"{client['base_url']}/chat/completions",
+            headers=headers,
+            json=data,
+            timeout=30
+        )
+        
+        if response.status_code == 200:
+            result = response.json()
+            content = result["choices"][0]["message"]["content"]
+            return content, 0.85
+        else:
+            return f"[GROK ERROR {response.status_code}] {prompt[:180]}", 0.6
+    except Exception as e:
+        return f"[GROK MOCK {model_name}] {prompt[:180]}", 0.7
 def _estimate_tokens(text:str)->int: return max(16, int(len(text)/4))
 def _traits(task:str):
     t = task.lower()
@@ -131,4 +204,8 @@ class ModelRouter:
                     return txt, 0.8
                 except Exception: pass
             return f"[GEMINI MOCK {model}] "+prompt[:180], 0.73
+        if model_name.startswith("ollama:"):
+            return _call_ollama(model_name, prompt)
+        if model_name.startswith("grok:"):
+            return _call_grok(model_name, prompt)
         return f"[MOCK {model_name}] "+prompt[:180], 0.7

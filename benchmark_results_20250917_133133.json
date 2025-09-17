@@ -1,0 +1,502 @@
+[
+  {
+    "task_name": "Code Generation",
+    "task_category": "coding",
+    "model": "ollama:qwen2.5:7b",
+    "response": "[OLLAMA ERROR 404] Write a Python function to find the longest common subsequence between two strings. Include time complexity analysis.",
+    "response_time": 0.16665148735046387,
+    "quality_score": 0.6,
+    "estimated_cost": 0.0,
+    "timestamp": "2025-09-17T13:25:07.345499"
+  },
+  {
+    "task_name": "Code Generation",
+    "task_category": "coding",
+    "model": "ollama:qwen2.5:7b",
+    "response": "[OLLAMA ERROR 404] Write a Python function to find the longest common subsequence between two strings. Include time complexity analysis.",
+    "response_time": 0.1640760898590088,
+    "quality_score": 0.6,
+    "estimated_cost": 0.0,
+    "timestamp": "2025-09-17T13:25:07.610247"
+  },
+  {
+    "task_name": "Code Generation",
+    "task_category": "coding",
+    "model": "ollama:qwen2.5:7b",
+    "response": "[OLLAMA ERROR 404] Write a Python function to find the longest common subsequence between two strings. Include time complexity analysis.",
+    "response_time": 0.16173911094665527,
+    "quality_score": 0.6,
+    "estimated_cost": 0.0,
+    "timestamp": "2025-09-17T13:25:07.872933"
+  },
+  {
+    "task_name": "Code Generation",
+    "task_category": "coding",
+    "model": "ollama:qwen2.5:7b",
+    "response": "[OLLAMA ERROR 404] Write a Python function to find the longest common subsequence between two strings. Include time complexity analysis.",
+    "response_time": 0.13444781303405762,
+    "quality_score": 0.6,
+    "estimated_cost": 0.0,
+    "timestamp": "2025-09-17T13:25:08.108396"
+  },
+  {
+    "task_name": "Code Generation",
+    "task_category": "coding",
+    "model": "ollama:qwen2.5:7b",
+    "response": "[OLLAMA ERROR 404] Write a Python function to find the longest common subsequence between two strings. Include time complexity analysis.",
+    "response_time": 0.1582481861114502,
+    "quality_score": 0.6,
+    "estimated_cost": 0.0,
+    "timestamp": "2025-09-17T13:25:08.367551"
+  },
+  {
+    "task_name": "Code Generation",
+    "task_category": "coding",
+    "model": "ollama:qwen2.5:7b",
+    "response": "[OLLAMA ERROR 404] Write a Python function to find the longest common subsequence between two strings. Include time complexity analysis.",
+    "response_time": 0.16180849075317383,
+    "quality_score": 0.6,
+    "estimated_cost": 0.0,
+    "timestamp": "2025-09-17T13:25:08.629770"
+  },
+  {
+    "task_name": "Code Generation",
+    "task_category": "coding",
+    "model": "ollama:qwen2.5:7b",
+    "response": "[OLLAMA ERROR 404] Write a Python function to find the longest common subsequence between two strings. Include time complexity analysis.",
+    "response_time": 0.18957257270812988,
+    "quality_score": 0.6,
+    "estimated_cost": 0.0,
+    "timestamp": "2025-09-17T13:25:08.920229"
+  },
+  {
+    "task_name": "Code Generation",
+    "task_category": "coding",
+    "model": "ollama:qwen2.5:7b",
+    "response": "[OLLAMA ERROR 404] Write a Python function to find the longest common subsequence between two strings. Include time complexity analysis.",
+    "response_time": 0.1613905429840088,
+    "quality_score": 0.6,
+    "estimated_cost": 0.0,
+    "timestamp": "2025-09-17T13:25:09.181838"
+  },
+  {
+    "task_name": "Code Generation",
+    "task_category": "coding",
+    "model": "ollama:qwen2.5:7b",
+    "response": "[OLLAMA ERROR 404] Write a Python function to find the longest common subsequence between two strings. Include time complexity analysis.",
+    "response_time": 0.16220784187316895,
+    "quality_score": 0.6,
+    "estimated_cost": 0.0,
+    "timestamp": "2025-09-17T13:25:09.444472"
+  },
+  {
+    "task_name": "Code Generation",
+    "task_category": "coding",
+    "model": "ollama:qwen2.5:7b",
+    "response": "[OLLAMA ERROR 404] Write a Python function to find the longest common subsequence between two strings. Include time complexity analysis.",
+    "response_time": 0.1457958221435547,
+    "quality_score": 0.6,
+    "estimated_cost": 0.0,
+    "timestamp": "2025-09-17T13:25:09.691000"
+  },
+  {
+    "task_name": "Summarization",
+    "task_category": "summarization",
+    "model": "ollama:qwen2.5:7b",
+    "response": "[OLLAMA ERROR 404] Summarize the key concepts of machine learning in exactly 5 bullet points, focusing on practical applications.",
+    "response_time": 0.16042113304138184,
+    "quality_score": 0.6,
+    "estimated_cost": 0.0,
+    "timestamp": "2025-09-17T13:25:09.952439"
+  },
+  {
+    "task_name": "Summarization",
+    "task_category": "summarization",
+    "model": "ollama:qwen2.5:7b",
+    "response": "[OLLAMA ERROR 404] Summarize the key concepts of machine learning in exactly 5 bullet points, focusing on practical applications.",
+    "response_time": 0.176497220993042,
+    "quality_score": 0.6,
+    "estimated_cost": 0.0,
+    "timestamp": "2025-09-17T13:25:10.229528"
+  },
+  {
+    "task_name": "Summarization",
+    "task_category": "summarization",
+    "model": "ollama:qwen2.5:7b",
+    "response": "[OLLAMA ERROR 404] Summarize the key concepts of machine learning in exactly 5 bullet points, focusing on practical applications.",
+    "response_time": 0.16293740272521973,
+    "quality_score": 0.6,
+    "estimated_cost": 0.0,
+    "timestamp": "2025-09-17T13:25:10.492825"
+  },
+  {
+    "task_name": "Summarization",
+    "task_category": "summarization",
+    "model": "ollama:qwen2.5:7b",
+    "response": "[OLLAMA ERROR 404] Summarize the key concepts of machine learning in exactly 5 bullet points, focusing on practical applications.",
+    "response_time": 0.2561368942260742,
+    "quality_score": 0.6,
+    "estimated_cost": 0.0,
+    "timestamp": "2025-09-17T13:25:10.850041"
+  },
+  {
+    "task_name": "Summarization",
+    "task_category": "summarization",
+    "model": "ollama:qwen2.5:7b",
+    "response": "[OLLAMA ERROR 404] Summarize the key concepts of machine learning in exactly 5 bullet points, focusing on practical applications.",
+    "response_time": 0.20784640312194824,
+    "quality_score": 0.6,
+    "estimated_cost": 0.0,
+    "timestamp": "2025-09-17T13:25:11.158220"
+  },
+  {
+    "task_name": "Summarization",
+    "task_category": "summarization",
+    "model": "ollama:qwen2.5:7b",
+    "response": "[OLLAMA ERROR 404] Summarize the key concepts of machine learning in exactly 5 bullet points, focusing on practical applications.",
+    "response_time": 0.1645815372467041,
+    "quality_score": 0.6,
+    "estimated_cost": 0.0,
+    "timestamp": "2025-09-17T13:25:11.423480"
+  },
+  {
+    "task_name": "Summarization",
+    "task_category": "summarization",
+    "model": "ollama:qwen2.5:7b",
+    "response": "[OLLAMA ERROR 404] Summarize the key concepts of machine learning in exactly 5 bullet points, focusing on practical applications.",
+    "response_time": 0.17041325569152832,
+    "quality_score": 0.6,
+    "estimated_cost": 0.0,
+    "timestamp": "2025-09-17T13:25:11.694636"
+  },
+  {
+    "task_name": "Summarization",
+    "task_category": "summarization",
+    "model": "ollama:qwen2.5:7b",
+    "response": "[OLLAMA ERROR 404] Summarize the key concepts of machine learning in exactly 5 bullet points, focusing on practical applications.",
+    "response_time": 0.1696925163269043,
+    "quality_score": 0.6,
+    "estimated_cost": 0.0,
+    "timestamp": "2025-09-17T13:25:11.964942"
+  },
+  {
+    "task_name": "Summarization",
+    "task_category": "summarization",
+    "model": "ollama:qwen2.5:7b",
+    "response": "[OLLAMA ERROR 404] Summarize the key concepts of machine learning in exactly 5 bullet points, focusing on practical applications.",
+    "response_time": 0.1620044708251953,
+    "quality_score": 0.6,
+    "estimated_cost": 0.0,
+    "timestamp": "2025-09-17T13:25:12.227452"
+  },
+  {
+    "task_name": "Summarization",
+    "task_category": "summarization",
+    "model": "ollama:qwen2.5:7b",
+    "response": "[OLLAMA ERROR 404] Summarize the key concepts of machine learning in exactly 5 bullet points, focusing on practical applications.",
+    "response_time": 0.16327929496765137,
+    "quality_score": 0.6,
+    "estimated_cost": 0.0,
+    "timestamp": "2025-09-17T13:25:12.491571"
+  },
+  {
+    "task_name": "Creative Writing",
+    "task_category": "creative",
+    "model": "ollama:qwen2.5:7b",
+    "response": "[OLLAMA ERROR 404] Write a short story (100 words) about an AI that discovers emotions. Make it engaging and thought-provoking.",
+    "response_time": 0.18136858940124512,
+    "quality_score": 0.6,
+    "estimated_cost": 0.0,
+    "timestamp": "2025-09-17T13:25:12.773408"
+  },
+  {
+    "task_name": "Creative Writing",
+    "task_category": "creative",
+    "model": "ollama:qwen2.5:7b",
+    "response": "[OLLAMA ERROR 404] Write a short story (100 words) about an AI that discovers emotions. Make it engaging and thought-provoking.",
+    "response_time": 0.15620899200439453,
+    "quality_score": 0.6,
+    "estimated_cost": 0.0,
+    "timestamp": "2025-09-17T13:25:13.030359"
+  },
+  {
+    "task_name": "Creative Writing",
+    "task_category": "creative",
+    "model": "ollama:qwen2.5:7b",
+    "response": "[OLLAMA ERROR 404] Write a short story (100 words) about an AI that discovers emotions. Make it engaging and thought-provoking.",
+    "response_time": 0.15038657188415527,
+    "quality_score": 0.6,
+    "estimated_cost": 0.0,
+    "timestamp": "2025-09-17T13:25:13.281357"
+  },
+  {
+    "task_name": "Creative Writing",
+    "task_category": "creative",
+    "model": "ollama:qwen2.5:7b",
+    "response": "[OLLAMA ERROR 404] Write a short story (100 words) about an AI that discovers emotions. Make it engaging and thought-provoking.",
+    "response_time": 0.1519324779510498,
+    "quality_score": 0.6,
+    "estimated_cost": 0.0,
+    "timestamp": "2025-09-17T13:25:13.533478"
+  },
+  {
+    "task_name": "Creative Writing",
+    "task_category": "creative",
+    "model": "ollama:qwen2.5:7b",
+    "response": "[OLLAMA ERROR 404] Write a short story (100 words) about an AI that discovers emotions. Make it engaging and thought-provoking.",
+    "response_time": 0.1778879165649414,
+    "quality_score": 0.6,
+    "estimated_cost": 0.0,
+    "timestamp": "2025-09-17T13:25:13.811784"
+  },
+  {
+    "task_name": "Creative Writing",
+    "task_category": "creative",
+    "model": "ollama:qwen2.5:7b",
+    "response": "[OLLAMA ERROR 404] Write a short story (100 words) about an AI that discovers emotions. Make it engaging and thought-provoking.",
+    "response_time": 0.17584013938903809,
+    "quality_score": 0.6,
+    "estimated_cost": 0.0,
+    "timestamp": "2025-09-17T13:25:14.088484"
+  },
+  {
+    "task_name": "Creative Writing",
+    "task_category": "creative",
+    "model": "ollama:qwen2.5:7b",
+    "response": "[OLLAMA ERROR 404] Write a short story (100 words) about an AI that discovers emotions. Make it engaging and thought-provoking.",
+    "response_time": 0.17705273628234863,
+    "quality_score": 0.6,
+    "estimated_cost": 0.0,
+    "timestamp": "2025-09-17T13:25:14.366115"
+  },
+  {
+    "task_name": "Creative Writing",
+    "task_category": "creative",
+    "model": "ollama:qwen2.5:7b",
+    "response": "[OLLAMA ERROR 404] Write a short story (100 words) about an AI that discovers emotions. Make it engaging and thought-provoking.",
+    "response_time": 0.16652560234069824,
+    "quality_score": 0.6,
+    "estimated_cost": 0.0,
+    "timestamp": "2025-09-17T13:25:14.633278"
+  },
+  {
+    "task_name": "Creative Writing",
+    "task_category": "creative",
+    "model": "ollama:qwen2.5:7b",
+    "response": "[OLLAMA ERROR 404] Write a short story (100 words) about an AI that discovers emotions. Make it engaging and thought-provoking.",
+    "response_time": 0.15708208084106445,
+    "quality_score": 0.6,
+    "estimated_cost": 0.0,
+    "timestamp": "2025-09-17T13:25:14.890747"
+  },
+  {
+    "task_name": "Creative Writing",
+    "task_category": "creative",
+    "model": "ollama:qwen2.5:7b",
+    "response": "[OLLAMA ERROR 404] Write a short story (100 words) about an AI that discovers emotions. Make it engaging and thought-provoking.",
+    "response_time": 0.1809983253479004,
+    "quality_score": 0.6,
+    "estimated_cost": 0.0,
+    "timestamp": "2025-09-17T13:25:15.172402"
+  },
+  {
+    "task_name": "Technical Analysis",
+    "task_category": "technical",
+    "model": "ollama:qwen2.5:7b",
+    "response": "[OLLAMA ERROR 404] Explain the differences between REST and GraphQL APIs, including pros/cons and use cases for each.",
+    "response_time": 0.1791248321533203,
+    "quality_score": 0.6,
+    "estimated_cost": 0.0,
+    "timestamp": "2025-09-17T13:25:15.452941"
+  },
+  {
+    "task_name": "Technical Analysis",
+    "task_category": "technical",
+    "model": "ollama:qwen2.5:7b",
+    "response": "[OLLAMA ERROR 404] Explain the differences between REST and GraphQL APIs, including pros/cons and use cases for each.",
+    "response_time": 0.1798083782196045,
+    "quality_score": 0.6,
+    "estimated_cost": 0.0,
+    "timestamp": "2025-09-17T13:25:15.733178"
+  },
+  {
+    "task_name": "Technical Analysis",
+    "task_category": "technical",
+    "model": "ollama:qwen2.5:7b",
+    "response": "[OLLAMA ERROR 404] Explain the differences between REST and GraphQL APIs, including pros/cons and use cases for each.",
+    "response_time": 0.17630553245544434,
+    "quality_score": 0.6,
+    "estimated_cost": 0.0,
+    "timestamp": "2025-09-17T13:25:16.010101"
+  },
+  {
+    "task_name": "Technical Analysis",
+    "task_category": "technical",
+    "model": "ollama:qwen2.5:7b",
+    "response": "[OLLAMA ERROR 404] Explain the differences between REST and GraphQL APIs, including pros/cons and use cases for each.",
+    "response_time": 0.17774558067321777,
+    "quality_score": 0.6,
+    "estimated_cost": 0.0,
+    "timestamp": "2025-09-17T13:25:16.288541"
+  },
+  {
+    "task_name": "Technical Analysis",
+    "task_category": "technical",
+    "model": "ollama:qwen2.5:7b",
+    "response": "[OLLAMA ERROR 404] Explain the differences between REST and GraphQL APIs, including pros/cons and use cases for each.",
+    "response_time": 0.2124476432800293,
+    "quality_score": 0.6,
+    "estimated_cost": 0.0,
+    "timestamp": "2025-09-17T13:25:16.602043"
+  },
+  {
+    "task_name": "Technical Analysis",
+    "task_category": "technical",
+    "model": "ollama:qwen2.5:7b",
+    "response": "[OLLAMA ERROR 404] Explain the differences between REST and GraphQL APIs, including pros/cons and use cases for each.",
+    "response_time": 0.22623920440673828,
+    "quality_score": 0.6,
+    "estimated_cost": 0.0,
+    "timestamp": "2025-09-17T13:25:16.928875"
+  },
+  {
+    "task_name": "Technical Analysis",
+    "task_category": "technical",
+    "model": "ollama:qwen2.5:7b",
+    "response": "[OLLAMA ERROR 404] Explain the differences between REST and GraphQL APIs, including pros/cons and use cases for each.",
+    "response_time": 0.1631157398223877,
+    "quality_score": 0.6,
+    "estimated_cost": 0.0,
+    "timestamp": "2025-09-17T13:25:17.192922"
+  },
+  {
+    "task_name": "Technical Analysis",
+    "task_category": "technical",
+    "model": "ollama:qwen2.5:7b",
+    "response": "[OLLAMA ERROR 404] Explain the differences between REST and GraphQL APIs, including pros/cons and use cases for each.",
+    "response_time": 0.17650699615478516,
+    "quality_score": 0.6,
+    "estimated_cost": 0.0,
+    "timestamp": "2025-09-17T13:25:17.469764"
+  },
+  {
+    "task_name": "Technical Analysis",
+    "task_category": "technical",
+    "model": "ollama:qwen2.5:7b",
+    "response": "[OLLAMA ERROR 404] Explain the differences between REST and GraphQL APIs, including pros/cons and use cases for each.",
+    "response_time": 0.17875123023986816,
+    "quality_score": 0.6,
+    "estimated_cost": 0.0,
+    "timestamp": "2025-09-17T13:25:17.749025"
+  },
+  {
+    "task_name": "Technical Analysis",
+    "task_category": "technical",
+    "model": "ollama:qwen2.5:7b",
+    "response": "[OLLAMA ERROR 404] Explain the differences between REST and GraphQL APIs, including pros/cons and use cases for each.",
+    "response_time": 0.19044256210327148,
+    "quality_score": 0.6,
+    "estimated_cost": 0.0,
+    "timestamp": "2025-09-17T13:25:18.040126"
+  },
+  {
+    "task_name": "Problem Solving",
+    "task_category": "problem_solving",
+    "model": "ollama:qwen2.5:7b",
+    "response": "[OLLAMA ERROR 404] Design a simple algorithm to detect if a linked list has a cycle. Provide step-by-step explanation.",
+    "response_time": 0.19640803337097168,
+    "quality_score": 0.6,
+    "estimated_cost": 0.0,
+    "timestamp": "2025-09-17T13:25:18.337390"
+  },
+  {
+    "task_name": "Problem Solving",
+    "task_category": "problem_solving",
+    "model": "ollama:qwen2.5:7b",
+    "response": "[OLLAMA ERROR 404] Design a simple algorithm to detect if a linked list has a cycle. Provide step-by-step explanation.",
+    "response_time": 0.16573023796081543,
+    "quality_score": 0.6,
+    "estimated_cost": 0.0,
+    "timestamp": "2025-09-17T13:25:18.603780"
+  },
+  {
+    "task_name": "Problem Solving",
+    "task_category": "problem_solving",
+    "model": "ollama:qwen2.5:7b",
+    "response": "[OLLAMA ERROR 404] Design a simple algorithm to detect if a linked list has a cycle. Provide step-by-step explanation.",
+    "response_time": 0.22089266777038574,
+    "quality_score": 0.6,
+    "estimated_cost": 0.0,
+    "timestamp": "2025-09-17T13:25:18.925693"
+  },
+  {
+    "task_name": "Problem Solving",
+    "task_category": "problem_solving",
+    "model": "ollama:qwen2.5:7b",
+    "response": "[OLLAMA ERROR 404] Design a simple algorithm to detect if a linked list has a cycle. Provide step-by-step explanation.",
+    "response_time": 0.21095800399780273,
+    "quality_score": 0.6,
+    "estimated_cost": 0.0,
+    "timestamp": "2025-09-17T13:25:19.237651"
+  },
+  {
+    "task_name": "Problem Solving",
+    "task_category": "problem_solving",
+    "model": "ollama:qwen2.5:7b",
+    "response": "[OLLAMA ERROR 404] Design a simple algorithm to detect if a linked list has a cycle. Provide step-by-step explanation.",
+    "response_time": 0.20888018608093262,
+    "quality_score": 0.6,
+    "estimated_cost": 0.0,
+    "timestamp": "2025-09-17T13:25:19.546974"
+  },
+  {
+    "task_name": "Problem Solving",
+    "task_category": "problem_solving",
+    "model": "ollama:qwen2.5:7b",
+    "response": "[OLLAMA ERROR 404] Design a simple algorithm to detect if a linked list has a cycle. Provide step-by-step explanation.",
+    "response_time": 0.18550777435302734,
+    "quality_score": 0.6,
+    "estimated_cost": 0.0,
+    "timestamp": "2025-09-17T13:25:19.833091"
+  },
+  {
+    "task_name": "Problem Solving",
+    "task_category": "problem_solving",
+    "model": "ollama:qwen2.5:7b",
+    "response": "[OLLAMA ERROR 404] Design a simple algorithm to detect if a linked list has a cycle. Provide step-by-step explanation.",
+    "response_time": 0.20147943496704102,
+    "quality_score": 0.6,
+    "estimated_cost": 0.0,
+    "timestamp": "2025-09-17T13:25:20.135033"
+  },
+  {
+    "task_name": "Problem Solving",
+    "task_category": "problem_solving",
+    "model": "ollama:qwen2.5:7b",
+    "response": "[OLLAMA ERROR 404] Design a simple algorithm to detect if a linked list has a cycle. Provide step-by-step explanation.",
+    "response_time": 0.22480177879333496,
+    "quality_score": 0.6,
+    "estimated_cost": 0.0,
+    "timestamp": "2025-09-17T13:25:20.460719"
+  },
+  {
+    "task_name": "Problem Solving",
+    "task_category": "problem_solving",
+    "model": "ollama:qwen2.5:7b",
+    "response": "[OLLAMA ERROR 404] Design a simple algorithm to detect if a linked list has a cycle. Provide step-by-step explanation.",
+    "response_time": 0.21239423751831055,
+    "quality_score": 0.6,
+    "estimated_cost": 0.0,
+    "timestamp": "2025-09-17T13:25:20.773591"
+  },
+  {
+    "task_name": "Problem Solving",
+    "task_category": "problem_solving",
+    "model": "ollama:qwen2.5:7b",
+    "response": "[OLLAMA ERROR 404] Design a simple algorithm to detect if a linked list has a cycle. Provide step-by-step explanation.",
+    "response_time": 0.1827402114868164,
+    "quality_score": 0.6,
+    "estimated_cost": 0.0,
+    "timestamp": "2025-09-17T13:25:21.056905"
+  }
+]
