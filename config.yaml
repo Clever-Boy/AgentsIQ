@@ -1,13 +1,10 @@
 
-agents:
-  - name: researcher
-    role: Finds relevant information
-    model: openai:gpt-4o-mini
-    allowed_tools: ["retrieval"]
-  - name: analyst
-    role: Summarizes and explains findings
-    model: anthropic:claude-3-haiku
-    allowed_tools: ["summarize"]
 settings:
   router:
     strategy: smart
+    weights: { cost: 0.60, latency: 0.25, quality: 0.15 }
+    profiles:
+      openai:gpt-4o-mini: { cost: 0.15,  latency: 0.8, quality: 0.75 }
+      openai:gpt-4o:      { cost: 5.00,  latency: 1.0, quality: 0.95 }
+      anthropic:claude-3-haiku: { cost: 0.25, latency: 0.7, quality: 0.80 }
+      google:gemini-pro:  { cost: 0.125, latency: 0.6, quality: 0.78 }
