@@ -2,7 +2,7 @@
 import time, json, matplotlib.pyplot as plt, pandas as pd, numpy as np
 from datetime import datetime
 from agentsiq.agent import Agent
-from agentsiq.swarm import Swarm
+from agentsiq.collab import Collab
 from agentsiq.router import ModelRouter
 from agentsiq.decision_store import latest_decisions
 
@@ -521,7 +521,7 @@ def run_original_benchmark():
     
     researcher = Agent("Researcher", "Finds information", "openai:gpt-4o-mini", ["retrieval"])
     analyst = Agent("Analyst", "Summarizes info", "anthropic:claude-3-haiku", ["summarize"])
-    swarm = Swarm([researcher, analyst], {"retrieval": lambda _: "[retrieval] ok", "summarize": lambda _: "[summary] ok"})
+    collab = Collab([researcher, analyst], {"retrieval": lambda _: "[retrieval] ok", "summarize": lambda _: "[summary] ok"})
     
     tasks = [
         "Summarize the key ideas of retrieval-augmented generation in 5 bullet points.",
@@ -531,7 +531,7 @@ def run_original_benchmark():
     ]
     
     for t in tasks:
-        _ = swarm.run(t)
+        _ = collab.run(t)
         time.sleep(0.1)
     
     decs = latest_decisions(100)

@@ -99,18 +99,22 @@ response, quality = router.call_model(model, "Write a Python function to sort a 
 print(f"Selected: {model}, Quality: {quality}")
 ```
 
-### Multi-Agent Swarm
+> 📖 **Want to understand how the intelligent selection works?** 
+> 
+> Check out our [Architecture Documentation](docs/architecture.md) for a detailed explanation of the multi-objective optimization algorithm and decision-making process.
+
+### Multi-Agent Collaboration
 ```python
 from agentsiq.agent import Agent
-from agentsiq.swarm import Swarm
+from agentsiq.collab import Collab
 from agentsiq.router import ModelRouter
 
 researcher = Agent("Researcher", "Finds information", "openai:gpt-4o-mini", ["retrieval"])
 analyst = Agent("Analyst", "Summarizes info", "anthropic:claude-3-haiku", ["summarize"])
 router = ModelRouter()
-swarm = Swarm([researcher, analyst], router, {})
+collab = Collab([researcher, analyst], {"retrieval": lambda _: "[retrieval] ok", "summarize": lambda _: "[summary] ok"})
 
-result = swarm.run("Analyze the latest trends in AI")
+result = collab.run("Analyze the latest trends in AI")
 ```
 
 ## 🖥️ Dashboard & Analytics
@@ -209,6 +213,79 @@ This script will:
 - Download recommended models (llama3.1:8b, qwen2.5:7b)
 - Test the connection
 - Create .env.example with proper configuration
+
+## 🏗️ Architecture Overview
+
+<div align="center">
+
+```mermaid
+graph TB
+    subgraph "User Input"
+        A[Task Request] --> B[Task Analysis]
+    end
+    
+    subgraph "Intelligent Router"
+        B --> C[Traits Detection]
+        C --> D[Token Estimation]
+        D --> E[Model Scoring]
+        E --> F[Multi-Objective Optimization]
+        F --> G[Model Selection]
+    end
+    
+    subgraph "Model Providers"
+        H[OpenAI<br/>GPT-4o, GPT-4o-mini]
+        I[Anthropic<br/>Claude-3-Haiku]
+        J[Google<br/>Gemini-Pro]
+        K[Ollama<br/>Llama3.1, Qwen2.5]
+        L[Grok<br/>Grok-2, Grok-2-Vision]
+    end
+    
+    subgraph "Scoring Engine"
+        M[Cost Analysis<br/>Weight: 60%]
+        N[Latency Analysis<br/>Weight: 25%]
+        O[Quality Analysis<br/>Weight: 15%]
+        P[Task-Specific Boosts]
+    end
+    
+    subgraph "Output & Analytics"
+        Q[Response Generation]
+        R[Quality Metrics]
+        S[Decision Logging]
+        T[AgentOps Analytics]
+    end
+    
+    G --> H
+    G --> I
+    G --> J
+    G --> K
+    G --> L
+    
+    E --> M
+    E --> N
+    E --> O
+    E --> P
+    
+    H --> Q
+    I --> Q
+    J --> Q
+    K --> Q
+    L --> Q
+    
+    Q --> R
+    Q --> S
+    Q --> T
+    
+    style A fill:#e1f5fe
+    style G fill:#c8e6c9
+    style Q fill:#fff3e0
+    style T fill:#f3e5f5
+```
+
+*AgentsIQ's intelligent multi-objective optimization system*
+
+</div>
+
+**📖 Detailed Architecture**: See [Architecture Documentation](docs/architecture.md) for complete technical details.
 
 ## 🔍 AgentOps Integration
 

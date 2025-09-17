@@ -1,7 +1,7 @@
 
 import threading, time
 from agentsiq.agent import Agent
-from agentsiq.swarm import Swarm
+from agentsiq.collab import Collab
 from agentsiq.obs import init_agentops
 from agentsiq.dashboard import app
 import uvicorn
@@ -14,14 +14,14 @@ def start_server():
 def run_demo_tasks():
     researcher=Agent("Researcher","Finds information","openai:gpt-4o-mini",["retrieval"])
     analyst=Agent("Analyst","Summarizes info","anthropic:claude-3-haiku",["summarize"])
-    swarm=Swarm([researcher,analyst],tools={"retrieval":lambda _: "[retrieval] ok", "summarize":lambda _: "[summary] ok"})
+    collab=Collab([researcher,analyst],tools={"retrieval":lambda _: "[retrieval] ok", "summarize":lambda _: "[summary] ok"})
     tasks=[
         "Summarize the key ideas of retrieval-augmented generation.",
         "Write a tiny Python function to reverse a list.",
         "Give a TL;DR of multi-agent coordination strategies.",
     ]
     for t in tasks:
-        out=swarm.run(t)
+        out=collab.run(t)
         print("\n--- DEMO OUTPUT ---\n", out["aggregated"][:200], "...")
         time.sleep(0.5)
 

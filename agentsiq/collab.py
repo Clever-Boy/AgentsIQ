@@ -1,9 +1,9 @@
-
 from typing import List,Dict,Callable
 from .agent import Agent
 from .router_manager import router_manager
 from .agentops_metrics import record as record_metrics
-class Swarm:
+
+class Collab:
     def __init__(self,agents:List[Agent],tools:Dict[str,Callable]=None):
         self.agents=agents; self.tools=tools or {}
     def run(self,task:str,mode:str="sequential"):
