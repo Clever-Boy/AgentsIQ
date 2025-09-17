@@ -69,32 +69,32 @@ graph TB
 
 ```mermaid
 flowchart TD
-    A[Task: "Write Python function"] --> B[Analyze Task]
+    A["Task: Write Python function"] --> B[Analyze Task]
     B --> C{Task Traits}
-    C -->|is_code: true| D[Code Task Detected]
-    C -->|is_summary: false| E[Not Summary Task]
-    C -->|has_math: false| F[No Math Detected]
+    C -->|"is_code: true"| D[Code Task Detected]
+    C -->|"is_summary: false"| E[Not Summary Task]
+    C -->|"has_math: false"| F[No Math Detected]
     
-    D --> G[Estimate Tokens: ~25]
+    D --> G["Estimate Tokens: ~25"]
     E --> G
     F --> G
     
     G --> H[Score All Models]
     H --> I[Apply Quality Boosts]
-    I --> J[OpenAI +0.05 for code]
+    I --> J["OpenAI +0.05 for code"]
     J --> K[Calculate Weighted Scores]
     
-    K --> L[Cost: 60% weight]
-    K --> M[Latency: 25% weight]
-    K --> N[Quality: 15% weight]
+    K --> L["Cost: 60% weight"]
+    K --> M["Latency: 25% weight"]
+    K --> N["Quality: 15% weight"]
     
     L --> O[Select Best Model]
     M --> O
     N --> O
     
-    O --> P[ollama:qwen2.5:7b<br/>Score: 0.0625]
+    O --> P["ollama:qwen2.5:7b<br/>Score: 0.0625"]
     P --> Q[Execute Task]
-    Q --> R[Return Response + Quality]
+    Q --> R["Return Response + Quality"]
     
     style A fill:#e3f2fd
     style P fill:#c8e6c9
@@ -113,9 +113,9 @@ graph LR
     end
     
     subgraph "Configuration"
-        E[config.yaml]
-        F[Environment Variables]
-        G[Dynamic Weights]
+        E["config.yaml"]
+        F["Environment Variables"]
+        G["Dynamic Weights"]
     end
     
     subgraph "Analytics"
@@ -126,11 +126,11 @@ graph LR
     end
     
     subgraph "External APIs"
-        L[OpenAI API]
-        M[Anthropic API]
-        N[Google API]
-        O[Ollama API]
-        P[Grok API]
+        L["OpenAI API"]
+        M["Anthropic API"]
+        N["Google API"]
+        O["Ollama API"]
+        P["Grok API"]
     end
     
     A --> E
