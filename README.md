@@ -1,47 +1,32 @@
-# AgentIQ 🧠🤖
-A lightweight multi-agent orchestration framework for **intelligent agents** with:
-- 🔀 Hybrid LLM routing (GPT-4, Claude, Gemini, etc.)
-- 📊 Explainability & decision logs
-- 🔒 Role-based governance & tool permissions
-- 📈 Integrated with AgentOps for performance tracking
+# AgentsIQ 🧠🤖
+A lightweight multi-agent orchestration framework with:
+- 🔀 Hybrid LLM routing (OpenAI, Anthropic, Gemini)
+- 📊 Explainability logs (JSONL traces)
+- 🔒 Simple governance (tool permissions)
+- 📈 AgentOps-style metrics recorder (CSV + JSON)
 
-## ✨ Features
-- **Hybrid Orchestration** – dynamically routes tasks to the best LLM based on task type, cost, or latency.
-- **Explainability Logs** – every agent decision is recorded with reasoning, confidence, and outcomes.
-- **Governance** – define which tools each agent can or cannot access.
-- **AgentOps Integration** – capture structured performance metrics for audit & analysis.
-
-## 🚀 Quick Start
+## Quick Start
 ```bash
-git clone https://github.com/yourname/AgentIQ.git
-cd AgentIQ
 pip install -r requirements.txt
-```
-
-Set your API keys as environment variables:
-```bash
-export OPENAI_API_KEY="sk-..."
-export ANTHROPIC_API_KEY="sk-ant..."
-export GOOGLE_API_KEY="your-gemini-key"
-```
-
-Run the demo:
-```bash
+# copy example env and fill your keys
+cp .env.example .env
+# run demo
 python examples/run_demo.py
+# (optional) start dashboard
+uvicorn agentsiq.dashboard:app --reload
 ```
 
-## ⚙️ Configuration
-See [`config.yaml`](./config.yaml) to define agents, models, and permissions.
-
-## 📊 Dashboard (Optional)
-Start a simple FastAPI dashboard:
-```bash
-uvicorn agentiq.dashboard:app --reload
+## API Keys
+Create a `.env` at project root (copy from `.env.example`).
+Keys are auto-loaded by `dotenv` in the router:
+```env
+OPENAI_API_KEY=sk-...
+ANTHROPIC_API_KEY=sk-ant-...
+GOOGLE_API_KEY=AIza-...
 ```
-This will visualize decision traces and AgentOps performance metrics.
 
-## 📜 License
-This project is licensed under the MIT License – see [LICENSE](./LICENSE).
+## Config
+See `config.yaml` for example agents and router strategy.
 
----
-Built with ❤️ to advance the future of intelligent agents.
+## License
+MIT — see LICENSE.

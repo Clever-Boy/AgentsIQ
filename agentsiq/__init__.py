@@ -1,2 +1,2 @@
-"""AgentIQ minimal package"""
-__version__ = "0.1.0"
+"""AgentsIQ - Minimal multi-agent framework with hybrid routing and explainability."""
+__version__ = "0.2.0"

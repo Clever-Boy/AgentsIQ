@@ -1,19 +1,22 @@
 from fastapi import FastAPI
-import json
-import os
+from fastapi.responses import JSONResponse, PlainTextResponse
+import os, glob
 
-app = FastAPI()
+app = FastAPI(title="AgentsIQ Dashboard")
 
 @app.get("/logs")
-def get_logs():
-    if os.path.exists("logs/decisions.json"):
-        with open("logs/decisions.json") as f:
-            return json.load(f)
-    return {"message": "No logs found"}
+def logs():
+    files = sorted(glob.glob("logs/*.jsonl"))
+    if not files:
+        return JSONResponse({"message": "No logs yet."})
+    latest = files[-1]
+    with open(latest, "r", encoding="utf-8") as f:
+        return PlainTextResponse(f.read(), media_type="text/plain")
 
 @app.get("/metrics")
-def get_metrics():
-    if os.path.exists("agentops_records/metrics.json"):
-        with open("agentops_records/metrics.json") as f:
-            return json.load(f)
-    return {"message": "No metrics found"}
+def metrics():
+    path = "agentops_records/metrics.csv"
+    if not os.path.exists(path):
+        return JSONResponse({"message": "No metrics yet."})
+    with open(path, "r", encoding="utf-8") as f:
+        return PlainTextResponse(f.read(), media_type="text/plain")

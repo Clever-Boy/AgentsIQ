@@ -1,5 +1,2 @@
-class Governance:
-    def __init__(self, policies): self.policies=policies
-    def check_permission(self, agent, tool):
-        allowed=self.policies.get(agent.name,[])
-        return tool in allowed
+def check_permission(agent, tool_name: str) -> bool:
+    return tool_name in getattr(agent, "allowed_tools", [])
