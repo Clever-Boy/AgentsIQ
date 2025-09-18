@@ -3,7 +3,7 @@
 
 <div align="center">
 
-![AgentsIQ Logo](docs/images/agentsIQ-mainImage.png)
+![AgentsIQ Logo](docs/images/agentsIQLogo.png)
 
 **The Ultimate LLM Selection Engine** — AgentsIQ automatically chooses the most cost-efficient, fastest, and highest-quality model for each task, supporting **10+ models** including OpenAI, Anthropic, Google, **Ollama (local)**, and **Grok**. Features comprehensive benchmarking with beautiful visualizations and real-time performance analytics.
 
@@ -186,6 +186,16 @@ See [Notebook Examples](examples/notebooks/README.md) for detailed learning path
 
 ### Basic Usage (Core Features)
 ```python
+# Install AgentsIQ in Google Colab
+!pip install agentsiq
+
+# Set up API keys (replace with your actual keys)
+import os
+os.environ['OPENAI_API_KEY'] = 'your_openai_key_here'
+os.environ['ANTHROPIC_API_KEY'] = 'your_anthropic_key_here'
+os.environ['GOOGLE_API_KEY'] = 'your_google_key_here'
+
+# Import and use AgentsIQ
 from agentsiq.router import ModelRouter
 
 router = ModelRouter()
@@ -196,14 +206,23 @@ print(f"Selected: {model}, Quality: {quality}")
 
 ### Advanced Usage (With AI Features)
 ```python
-# Install with: pip install agentsiq[ai]
+# Install with AI features in Google Colab
+!pip install agentsiq[ai]
+
+# Set up API keys
+import os
+os.environ['OPENAI_API_KEY'] = 'your_openai_key_here'
+os.environ['ANTHROPIC_API_KEY'] = 'your_anthropic_key_here'
+os.environ['GOOGLE_API_KEY'] = 'your_google_key_here'
+
+# Import AgentsIQ components
 from agentsiq.router import ModelRouter
 from agentsiq.agent import Agent
 from agentsiq.collab import Collab
 
 # Create specialized agents
-researcher = Agent("Researcher", "Conducts research and analysis")
-analyst = Agent("Analyst", "Analyzes data and provides insights")
+researcher = Agent("Researcher", "Conducts research and analysis", "anthropic:claude-3-haiku", ["research"])
+analyst = Agent("Analyst", "Analyzes data and provides insights", "openai:gpt-4o-mini", ["analyze"])
 
 # Create collaboration system
 collab = Collab([researcher, analyst])
@@ -212,6 +231,16 @@ collab = Collab([researcher, analyst])
 result = collab.run("Research the latest trends in AI and provide analysis")
 print(result["aggregated"])
 ```
+
+### Google Colab Notebook Examples
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Clever-Boy/AgentsIQ/blob/main/examples/notebooks/search_agent/search_agent_basic.ipynb)
+
+**Try our interactive notebooks (Google Colab Ready!):**
+- [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Clever-Boy/AgentsIQ/blob/main/examples/notebooks/search_agent/search_agent_basic.ipynb) **Basic Search Agent** - Learn intelligent routing fundamentals
+- [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Clever-Boy/AgentsIQ/blob/main/examples/notebooks/search_agent/complete_agent_system.ipynb) **Advanced Multi-Agent System** - Full production setup
+- [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Clever-Boy/AgentsIQ/blob/main/examples/notebooks/search_agent/research_agent.ipynb) **Research Agent** - Specialized research workflows
+
+> 💡 **Google Colab Tips**: All notebooks are pre-configured for Google Colab. Just add your API keys and run!
 
 > 📖 **Want to understand how the intelligent selection works?** 
 > 
