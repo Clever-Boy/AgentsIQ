@@ -78,6 +78,7 @@ pip install agentsiq[dev]
 pip install agentsiq[docs]
 ```
 
+
 #### Option 4: Install from Source
 ```bash
 git clone https://github.com/yourusername/AgentsIQ.git
