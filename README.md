@@ -78,7 +78,6 @@ pip install agentsiq[dev]
 pip install agentsiq[docs]
 ```
 
-
 #### Option 4: Install from Source
 ```bash
 git clone https://github.com/yourusername/AgentsIQ.git
@@ -275,7 +274,7 @@ openai:gpt-4o            1.0000                 5.0000       0.9500             
 
 <div align="center">
 
-![AgentsIQ Benchmark Results](agentsiq_benchmark_charts_20250917_132522.png)
+![AgentsIQ Benchmark Results](build/agentsiq_benchmark_charts_20250917_132522.png)
 
 *Comprehensive 9-chart analysis showing model performance across all dimensions*
 
