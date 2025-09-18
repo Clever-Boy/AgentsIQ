@@ -1,10 +1,10 @@
 
 import time, json, matplotlib.pyplot as plt, pandas as pd, numpy as np
 from datetime import datetime
-from src.agentsiq.agent import Agent
-from src.agentsiq.collab import Collab
-from src.agentsiq.router import ModelRouter
-from src.agentsiq.decision_store import latest_decisions
+from agentsiq.agent import Agent
+from agentsiq.collab import Collab
+from agentsiq.router import ModelRouter
+from agentsiq.decision_store import latest_decisions
 
 def run_comprehensive_benchmark():
     """Run a comprehensive benchmark comparing all available models"""

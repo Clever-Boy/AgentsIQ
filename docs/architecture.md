@@ -11,7 +11,7 @@ AgentsIQ is an intelligent multi-model router that automatically selects the mos
 The `router.select_model()` method uses a **multi-objective optimization** approach to choose the best model for each task:
 
 ```python
-from src.agentsiq.router import ModelRouter
+from agentsiq.router import ModelRouter
 
 router = ModelRouter()
 model = router.select_model("Write a Python function to sort a list")

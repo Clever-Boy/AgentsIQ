@@ -1,7 +1,7 @@
 
-from src.agentsiq.agent import Agent
-from src.agentsiq.collab import Collab
-from src.agentsiq.obs import init_agentops
+from agentsiq.agent import Agent
+from agentsiq.collab import Collab
+from agentsiq.obs import init_agentops
 init_agentops()
 def retrieval(task: str) -> str: return "[retrieval] located 3 relevant sources."
 def summarize(task: str) -> str: return "[summary] This is a short summary of the topic.]"
