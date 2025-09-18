@@ -274,7 +274,7 @@ openai:gpt-4o            1.0000                 5.0000       0.9500             
 
 <div align="center">
 
-![AgentsIQ Benchmark Results](https://raw.githubusercontent.com/Clever-Boy/AgentsIQ/main/docs/images/agentsiq_benchmark_charts_20250917_132522.png)
+![AgentsIQ Benchmark Results](docs/images/agentsiq_benchmark_charts_20250917_132522.png)
 
 *Comprehensive 9-chart analysis showing model performance across all dimensions*
 

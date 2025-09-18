@@ -244,7 +244,7 @@ docs/_build/
 # Benchmark outputs
 benchmark_*.png
 benchmark_*.html
-agentsiq_benchmark_charts_*.png
+# agentsiq_benchmark_charts_*.png  # Commented out to allow docs/images charts
 
 # Jupyter notebook checkpoints
 .ipynb_checkpoints/
