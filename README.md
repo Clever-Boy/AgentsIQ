@@ -44,11 +44,54 @@ https://github.com/yourusername/AgentsIQ/assets/youruserid/AgentIQ.mp4
 ## 🚀 Quick Start
 
 ### Installation
+
+#### Option 1: Basic Installation (Core Features)
+```bash
+pip install agentsiq
+```
+*Installs core functionality with minimal dependencies*
+
+#### Option 2: Full Installation (All Features)
+```bash
+pip install agentsiq[all]
+```
+*Installs all AI/LLM, web, data, and monitoring features*
+
+#### Option 3: Modular Installation (Choose Your Features)
+```bash
+# AI/LLM features (OpenAI, Anthropic, Google)
+pip install agentsiq[ai]
+
+# Web framework features (FastAPI, Uvicorn)
+pip install agentsiq[web]
+
+# Data analysis features (Pandas, Matplotlib, NumPy)
+pip install agentsiq[data]
+
+# Monitoring features (AgentOps)
+pip install agentsiq[monitoring]
+
+# Development features (Testing, Linting)
+pip install agentsiq[dev]
+
+# Documentation features (Sphinx)
+pip install agentsiq[docs]
+```
+
+#### Option 4: Install from Source
 ```bash
 git clone https://github.com/yourusername/AgentsIQ.git
 cd AgentsIQ
 python -m venv venv && source venv/bin/activate   # Windows: venv\Scripts\activate
-pip install -r requirements.txt
+pip install -e .
+```
+
+#### Option 5: Development Installation
+```bash
+git clone https://github.com/yourusername/AgentsIQ.git
+cd AgentsIQ
+python -m venv venv && source venv/bin/activate
+pip install -e ".[dev,docs]"
 ```
 
 ### Environment Setup
@@ -67,11 +110,63 @@ OLLAMA_URL=http://localhost:11434
 AGENTOPS_API_KEY=your_agentops_key
 ```
 
+### 📦 Modular Dependencies
+
+AgentsIQ uses a modular dependency structure to ensure compatibility and flexibility:
+
+**Core Dependencies (Always Installed):**
+- `pyyaml` - Configuration file handling
+- `python-dotenv` - Environment variable management
+- `requests` - HTTP requests for API calls
+
+**Optional Dependencies (Install as needed):**
+- `agentsiq[ai]` - AI/LLM providers (OpenAI, Anthropic, Google)
+- `agentsiq[web]` - Web framework (FastAPI, Uvicorn)
+- `agentsiq[data]` - Data analysis (Pandas, Matplotlib, NumPy, Seaborn)
+- `agentsiq[monitoring]` - Performance monitoring (AgentOps)
+- `agentsiq[dev]` - Development tools (Testing, Linting)
+- `agentsiq[docs]` - Documentation tools (Sphinx)
+
+**Benefits:**
+- ✅ **Test PyPI Compatible**: Core package installs without dependency conflicts
+- ✅ **Lightweight**: Install only what you need
+- ✅ **Flexible**: Easy to add new features
+- ✅ **Production Ready**: Full features available on main PyPI
+
+### Installation Requirements by Use Case
+
+| Use Case | Installation Command | What You Get |
+|----------|---------------------|--------------|
+| **Basic Routing** | `pip install agentsiq` | Core model selection, basic API calls |
+| **AI Development** | `pip install agentsiq[ai]` | + OpenAI, Anthropic, Google integration |
+| **Web Applications** | `pip install agentsiq[web]` | + FastAPI, Uvicorn for web services |
+| **Data Analysis** | `pip install agentsiq[data]` | + Pandas, Matplotlib, NumPy, Seaborn |
+| **Production Monitoring** | `pip install agentsiq[monitoring]` | + AgentOps integration |
+| **Full Stack** | `pip install agentsiq[all]` | All features for complete applications |
+| **Development** | `pip install agentsiq[dev]` | + Testing, linting, code quality tools |
+
 ### Run the Enhanced Benchmark
 ```bash
 python examples/benchmark.py
 ```
 Choose option 1 for the comprehensive model comparison with beautiful visualizations!
+
+### 📓 Jupyter Notebook Examples
+```bash
+# Start Jupyter Lab
+jupyter lab examples/notebooks/
+
+# Or start Jupyter Notebook
+jupyter notebook examples/notebooks/
+```
+
+**Available Notebooks:**
+- **🔍 Basic Search Agent** - Learn fundamentals with simple search agents
+- **🚀 Advanced Search Agent** - Multi-agent collaboration and web search
+- **🔬 Research Agent** - Deep research and analysis capabilities
+- **🎯 Complete Agent System** - Enterprise-grade multi-agent systems
+
+See [Notebook Examples](examples/notebooks/README.md) for detailed learning paths and tutorials.
 
 ## 📊 Supported Models
 
@@ -89,7 +184,7 @@ Choose option 1 for the comprehensive model comparison with beautiful visualizat
 
 ## 🎯 Usage Examples
 
-### Basic Usage
+### Basic Usage (Core Features)
 ```python
 from agentsiq.router import ModelRouter
 
@@ -97,6 +192,25 @@ router = ModelRouter()
 model = router.select_model("Write a Python function to sort a list")
 response, quality = router.call_model(model, "Write a Python function to sort a list")
 print(f"Selected: {model}, Quality: {quality}")
+```
+
+### Advanced Usage (With AI Features)
+```python
+# Install with: pip install agentsiq[ai]
+from agentsiq.router import ModelRouter
+from agentsiq.agent import Agent
+from agentsiq.collab import Collab
+
+# Create specialized agents
+researcher = Agent("Researcher", "Conducts research and analysis")
+analyst = Agent("Analyst", "Analyzes data and provides insights")
+
+# Create collaboration system
+collab = Collab([researcher, analyst])
+
+# Run collaborative task
+result = collab.run("Research the latest trends in AI and provide analysis")
+print(result["aggregated"])
 ```
 
 > 📖 **Want to understand how the intelligent selection works?** 
