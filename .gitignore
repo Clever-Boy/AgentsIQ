@@ -262,3 +262,9 @@ dist/
 # Temporary directories
 tmp/
 temp/
+
+# Project specific directories
+runtime/
+config/.env
+config/.env.*
+dev/

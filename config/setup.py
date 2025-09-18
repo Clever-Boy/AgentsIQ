@@ -31,7 +31,8 @@ setup(
         "Source": "https://github.com/yourusername/AgentsIQ",
         "Documentation": "https://github.com/yourusername/AgentsIQ/blob/main/docs/architecture.md",
     },
-    packages=find_packages(),
+    packages=find_packages(where="src"),
+    package_dir={"": "src"},
     classifiers=[
         "Development Status :: 5 - Production/Stable",
         "Intended Audience :: Developers",

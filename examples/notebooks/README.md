@@ -161,7 +161,7 @@ tools = {
 
 ### **Configuring Model Routing**
 ```python
-from agentsiq.router import ModelRouter
+from src.agentsiq.router import ModelRouter
 
 # Create router with custom weights
 router = ModelRouter()

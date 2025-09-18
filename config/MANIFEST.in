@@ -15,3 +15,4 @@ global-exclude .pytest_cache
 global-exclude .mypy_cache
 global-exclude venv
 global-exclude .venv
+

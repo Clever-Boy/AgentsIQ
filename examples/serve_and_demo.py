@@ -1,9 +1,9 @@
 
 import threading, time
-from agentsiq.agent import Agent
-from agentsiq.collab import Collab
-from agentsiq.obs import init_agentops
-from agentsiq.dashboard import app
+from src.agentsiq.agent import Agent
+from src.agentsiq.collab import Collab
+from src.agentsiq.obs import init_agentops
+from src.agentsiq.dashboard import app
 import uvicorn
 
 init_agentops()

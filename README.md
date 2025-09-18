@@ -290,6 +290,30 @@ openai:gpt-4o            1.0000                 5.0000       0.9500             
 - **Task Category Heatmap**: Performance matrix across different task types
 - **Cost Savings Analysis**: Savings vs GPT-4o baseline
 
+## 🔄 Decision Flow Diagram
+
+```mermaid
+flowchart TD
+    A["🎯 Task: 'Write Python function'"] --> B["🔍 Task Analysis"]
+    B --> C["📊 Extract Traits"]
+    C --> D["is_code: true<br/>is_summary: false<br/>has_math: false"]
+    D --> E["🎯 Select Strategy"]
+    E --> F["Code Strategy<br/>(Cost: 0.4, Latency: 0.3, Quality: 0.3)"]
+    F --> G["📈 Score All Models"]
+    G --> H["gpt-4o-mini: 0.85<br/>claude-3-haiku: 0.82<br/>gpt-3.5-turbo: 0.78"]
+    H --> I["🏆 Select Best Model"]
+    I --> J["gpt-4o-mini<br/>(Highest Score: 0.85)"]
+    J --> K["📞 API Call"]
+    K --> L["✅ Response + Quality: 0.9"]
+    L --> M["📝 Log Decision"]
+    M --> N["📊 AgentOps Analytics"]
+    
+    style A fill:#e1f5fe
+    style J fill:#c8e6c9
+    style L fill:#c8e6c9
+    style N fill:#fff3e0
+```
+
 ## 🏠 Local Model Setup (Ollama)
 
 ### Install Ollama

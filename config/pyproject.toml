@@ -113,8 +113,8 @@ agentsiq-benchmark = "examples.benchmark:run"
 agentsiq-demo = "examples.serve_and_demo:main"
 
 [tool.setuptools.packages.find]
-where = ["."]
-include = ["agentsiq*", "examples*"]
+where = ["src"]
+include = ["agentsiq*"]
 
 [tool.setuptools.package-data]
 agentsiq = ["*.yaml", "*.yml"]
