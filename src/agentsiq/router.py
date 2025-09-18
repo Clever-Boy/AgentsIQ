@@ -42,6 +42,15 @@ def _get_grok_client():
         except Exception: _grok_client = False
     return _grok_client
 
+def _check_ollama_available():
+    """Check if Ollama is available"""
+    try:
+        ollama_url = os.getenv("OLLAMA_URL", "http://localhost:11434")
+        response = requests.get(f"{ollama_url}/api/tags", timeout=5)
+        return response.status_code == 200
+    except:
+        return False
+
 def _call_ollama(model_name: str, prompt: str):
     """Call Ollama API for local models"""
     try:
@@ -149,6 +158,11 @@ class ModelRouter:
         return objective, why
     def select_model(self, task, preferred:str="", agent_name:str="", role:str=""):
         tokens = _estimate_tokens(task); traits=_traits(task); candidates = list(self.profiles.keys())
+        
+        # Filter out Ollama models if Ollama is not available
+        if not _check_ollama_available():
+            candidates = [m for m in candidates if not m.startswith("ollama:")]
+        
         if self.strategy == "cheapest": chosen = min(candidates, key=lambda m: self.profiles[m]["cost"])
         elif self.strategy == "fastest": chosen = min(candidates, key=lambda m: self.profiles[m]["latency"])
         elif self.strategy == "hybrid":
