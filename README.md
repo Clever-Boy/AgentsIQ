@@ -7,6 +7,14 @@
 
 **The Ultimate LLM Selection Engine** — AgentsIQ automatically chooses the most cost-efficient, fastest, and highest-quality model for each task, supporting **10+ models** including OpenAI, Anthropic, Google, **Ollama (local)**, and **Grok**. Features comprehensive benchmarking with beautiful visualizations and real-time performance analytics.
 
+## 🚀 Quick Start
+
+**Try AgentsIQ instantly in Google Colab:**
+
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Clever-Boy/AgentsIQ/blob/main/examples/notebooks/search_agent/search_agent_basic.ipynb) **[Basic Search Agent](https://colab.research.google.com/github/Clever-Boy/AgentsIQ/blob/main/examples/notebooks/search_agent/search_agent_basic.ipynb)** | 
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Clever-Boy/AgentsIQ/blob/main/examples/notebooks/search_agent/search_agent_advanced.ipynb) **[Advanced System](https://colab.research.google.com/github/Clever-Boy/AgentsIQ/blob/main/examples/notebooks/search_agent/search_agent_advanced.ipynb)** | 
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Clever-Boy/AgentsIQ/blob/main/examples/notebooks/search_agent/complete_agent_system.ipynb) **[Complete System](https://colab.research.google.com/github/Clever-Boy/AgentsIQ/blob/main/examples/notebooks/search_agent/complete_agent_system.ipynb)**
+
 ## 🎥 Watch AgentsIQ in Action
 
 <div align="center">
@@ -232,15 +240,50 @@ result = collab.run("Research the latest trends in AI and provide analysis")
 print(result["aggregated"])
 ```
 
-### Google Colab Notebook Examples
+### 🚀 Google Colab Notebook Examples
+
+**Click the badges below to open notebooks directly in Google Colab:**
+
+<table>
+<tr>
+<td align="center">
+
+**[🔍 Basic Search Agent](https://colab.research.google.com/github/Clever-Boy/AgentsIQ/blob/main/examples/notebooks/search_agent/search_agent_basic.ipynb)**
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Clever-Boy/AgentsIQ/blob/main/examples/notebooks/search_agent/search_agent_basic.ipynb)
 
-**Try our interactive notebooks (Google Colab Ready!):**
-- [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Clever-Boy/AgentsIQ/blob/main/examples/notebooks/search_agent/search_agent_basic.ipynb) **Basic Search Agent** - Learn intelligent routing fundamentals
-- [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Clever-Boy/AgentsIQ/blob/main/examples/notebooks/search_agent/complete_agent_system.ipynb) **Advanced Multi-Agent System** - Full production setup
-- [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Clever-Boy/AgentsIQ/blob/main/examples/notebooks/search_agent/research_agent.ipynb) **Research Agent** - Specialized research workflows
+Learn intelligent routing fundamentals with dashboard metrics
 
-> 💡 **Google Colab Tips**: All notebooks are pre-configured for Google Colab. Just add your API keys and run!
+</td>
+<td align="center">
+
+**[🚀 Advanced Multi-Agent System](https://colab.research.google.com/github/Clever-Boy/AgentsIQ/blob/main/examples/notebooks/search_agent/search_agent_advanced.ipynb)**
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Clever-Boy/AgentsIQ/blob/main/examples/notebooks/search_agent/search_agent_advanced.ipynb)
+
+Full collaboration with comprehensive analytics dashboard
+
+</td>
+</tr>
+<tr>
+<td align="center">
+
+**[🎯 Complete Agent System](https://colab.research.google.com/github/Clever-Boy/AgentsIQ/blob/main/examples/notebooks/search_agent/complete_agent_system.ipynb)**
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Clever-Boy/AgentsIQ/blob/main/examples/notebooks/search_agent/complete_agent_system.ipynb)
+
+Production-ready multi-agent orchestration
+
+</td>
+<td align="center">
+
+**[🔬 Research Agent](https://colab.research.google.com/github/Clever-Boy/AgentsIQ/blob/main/examples/notebooks/search_agent/research_agent.ipynb)**
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Clever-Boy/AgentsIQ/blob/main/examples/notebooks/search_agent/research_agent.ipynb)
+
+Specialized research workflows
+
+</td>
+</tr>
+</table>
+
+> 💡 **Google Colab Tips**: All notebooks include interactive dashboards showing model performance, cost analysis, and decision metrics. Just add your API keys and run!
 
 > 📖 **Want to understand how the intelligent selection works?** 
 > 
